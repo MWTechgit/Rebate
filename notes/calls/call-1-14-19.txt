@@ -1,0 +1,39 @@
+## Updating rebate quantity:
+When you increase rebates remaining, also increase the rebate
+inventory by the same number.
+    
+## Feature Request:
+Note what city has spent per fiscal year.
+I don't remember the details of this request.
+Will have to ask later.
+
+## Fiscal Year
+The old app is using the calendar year as the fiscal year.
+We should use the actual fiscal year.
+
+No partner has more than one active for rebate for the current fiscal year.
+
+I was hoping we could drop old data but Sam said they still need that info.
+They don't need to keep old rebate document files.
+
+The map shows the water supplier in case they put in
+the wrong water supplier.
+
+Claims Expiring Soon Notifications
+- The app doesn't send this email at all
+- Just allow her to hit yes/no
+
+Remove post marked at
+- remove logic around this
+
+Can't log in to system after claim expired
+
+"Claim not ready for review"
+- Ignore this,
+- ignore skip document upload
+
+Add columns to CSV export for accounting:
+* PurchaseDate
+* DateOfApproval
+
+Desired rebate count is for display purposes only

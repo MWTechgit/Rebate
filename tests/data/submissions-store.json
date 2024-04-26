@@ -1,0 +1,71 @@
+{
+    "rebate_id": 1,
+    "applicant": {
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane@example.com",
+        "phone": "(555) 555-5555)",
+        "mobile": null,
+        "email_opt_in": 0,
+        "feature_on_water_saver": 1
+    },
+    "utility_account": {
+        "account_number": "10458",
+        "address": {
+            "line_one": "422 N Riverside Dr",
+            "line_two": "Unit 322",
+            "city": "Cityname",
+            "state": "Florida",
+            "postcode": "90210"
+        }
+    },
+    "property": {
+        "property_type": "Residential",
+        "building_type": "Single Family",
+        "property_type_group": "residential",
+        "subdivision_or_development": "Foo Divison",
+        "years_lived": "12",
+        "year_built": "1908",
+        "original_toilet": "Yes",
+        "gallons_per_flush": "2",
+        "occupants": "1 - 8",
+        "full_bathrooms": 4,
+        "half_bathrooms": 2,
+        "address": {
+            "line_one": "422 N Riverside Dr",
+            "line_two": "Unit 322",
+            "city": "Cityname",
+            "state": "Florida",
+            "postcode": "90210"
+        }
+    },
+    "owner": {
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane@example.com",
+        "company": null,
+        "phone": "(555) 555-5555",
+        "mobile": null,
+        "address": {
+            "line_one": "222 E Oceanside Dr",
+            "line_two": "Unit 7",
+            "city": "Fort Lauderdale",
+            "state": "Florida",
+            "postcode": "90210"
+        }
+    },
+    "application": {
+        "rebate_count": 2,
+        "address": {
+            "line_one": "422 N Riverside Dr",
+            "line_two": "Unit 322",
+            "city": "Cityname",
+            "state": "Florida",
+            "postcode": "90210"
+        }
+    },
+    "reference": {
+        "reference_type_id": 1,
+        "info_response": "http://google.com"
+    }
+}

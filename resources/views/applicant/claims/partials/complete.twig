@@ -1,0 +1,18 @@
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="mb-0">Rebate Claim Being Reviewed</h4>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-success">
+            Your rebate claim has been successfully submitted
+        </div>
+
+        <p>Thank you for submitting your rebate claim. We have received it and it's currently being reviewed.</p>
+
+        <p>Once your claim is approved, we will notify you by E-Mail at <b>{{ claim.applicant.email }}</b></p>
+
+        <div class="alert alert-info mt-4">
+            Need to delete or or re-upload some of your documents? <a href="{{ route('claims.edit', [claim]) }}">Click here to make changes</a>
+        </div>
+    </div> <!-- .card-body -->
+</div> <!-- .card -->

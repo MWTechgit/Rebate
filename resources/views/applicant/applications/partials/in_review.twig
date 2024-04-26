@@ -1,0 +1,31 @@
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="mb-0">Application Being Reviewed</h4>
+    </div> <!-- .card-header -->
+    <div class="card-body">
+        <p>Thank you for applying for a rebate. We have received your application and it's currently being reviewed.</p>
+
+        <p>
+            Please allow up to five (5) business days to receive an email confirmation of "Approval or Denial"
+            from the Rebate Administrator regarding your application.
+        </p>
+
+        <p>
+            <b>
+                If your application is approved, you have {{ claimLifetime }} days to purchase your item,
+                install it and submit your rebate claim.
+            </b>
+        </p>
+
+        <a class="btn btn-secondary" href="{{ route('applications.show', [application]) }}">See your application</a>
+    </div> <!-- .card-body -->
+</div> <!-- .card -->
+
+<div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">Important!</h4>
+    <p class="mb-0">
+        Remember, please <b>do not purchase any items until your application has been approved</b>.
+        If you purchase your item before your application is approved you will forfeit your rebate
+        claim.
+    </p>
+</div> <!-- .alert -->

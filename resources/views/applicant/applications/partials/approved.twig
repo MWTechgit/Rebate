@@ -1,0 +1,39 @@
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="mb-0">Application Approved</h4>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-success">
+            Congratulations, your rebate application has been approved! You can now go ahead and purchase your rebate item.
+        </div>
+
+        <h4>What do I need to claim my rebate?</h4>
+
+        <p>When you purchase your item remember to save your receipt and product UPC code.  You will need to scan and submit a copy of each with your rebate claim.  You will also need to provide a photo of the item installed on the property.</p>
+
+        <p>What's next? Claim your rebate.</p>
+
+        {% if claim.allFilesUploaded() %}
+            <form class="mb-2" class="mb-2" action="{{ route('claims.submit', [claim]) }}" method="POST">
+                {{ csrf_field() }}
+                <input type="submit" class="btn btn-secondary" value="Skip and submit your claim" />
+            </form>
+            <a href="{{ route('claims.edit', [claim]) }}" class="mb-2 btn btn-secondary">Edit your claim</a>
+        {% else %}
+            <a href="{{ route('claims.edit', [claim]) }}" class="btn btn-primary mb-2">Upload claim documents</a>
+            <form class="mb-2" action="{{ route('claims.submit', [claim]) }}" method="POST">
+                {{ csrf_field() }}
+                <input type="submit" class="btn btn-secondary" value="Skip and submit your claim" />
+            </form>
+            You have uploaded {{ applicant.claim.numFiles() }} document(s). 
+            <a href="{{ route('applications.show', [application]) }}">See your application</a>
+        {% endif %}
+    </div> <!-- .card-body -->
+</div> <!-- .card -->
+
+<div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">Important!</h4>
+    <p class="mb-0">
+        You have to purchase your item and submit your rebate claim <b>before {{ claim.expires_at.format('m/d/Y') }}.</b>
+    </p>
+</div> <!-- .alert -->

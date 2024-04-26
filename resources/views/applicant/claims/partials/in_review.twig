@@ -1,0 +1,14 @@
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="mb-0">Rebate Claim Being Reviewed</h4>
+    </div> <!-- .card-header -->
+    <div class="card-body">
+        <p>
+            Your rebate claim is currently being reviewed. 
+            Once your claim is approved, we will notify you by E-Mail at <b>{{ claim.applicant.email }}.</b>
+        </p>
+
+        <a class="btn btn-secondary" href="{{ route('applications.show', [application]) }}">See your application</a>
+
+    </div> <!-- .card-body -->
+</div> <!-- .card -->

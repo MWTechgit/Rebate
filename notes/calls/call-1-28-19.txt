@@ -1,0 +1,47 @@
+# New Features
+* Change Application Rebate
+    - Claim Detail => Select Action
+    - Releases rebates from previous (increase remaining)
+    - Assigns rebates to new (decrease remaining)
+* Send Special Attention (Applications)
+    - Sends special attention E-Mail
+    - Doesn't do anything if application is not "special attention"
+    - SA = New or pending review for over 14 days
+
+
+# Question
+* Should we skip expiring claims that are mailed? The old app does.
+
+# Updating rebate quantity:
+When you increase rebates remaining, also increase the rebate
+inventory by the same number.
+
+Are you sure this is correct?
+In what cases would you do this?
+
+Do claims really need a fiscal year attribute?
+The fiscal year is determined by the rebate attached to it.
+
+
+## Feature Request:
+Note what city has spent per fiscal year.
+I don't remember the details of this request.
+Will have to ask later.
+Looking at rebate inventory, see what they have spent there.
+
+
+Add columns to CSV export for accounting:
+* PurchaseDate
+* DateOfApproval
+
+# Go over rebate partner parents
+The only thing to it is to use the rebates from the parent partner correct?
+When application denied
+When claim denied
+
+inventory 100
+look at budget to see if running out
+add additional rebates
+
+when the claim is approved,
+I could

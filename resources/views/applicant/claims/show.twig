@@ -1,0 +1,67 @@
+{% extends 'layouts.app' %}
+
+{% block content %}
+<div class="container">
+    <div class="inner">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="mb-0">Review Rebate Claim Documents</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success">
+                    Thank you for uploading all your documents. Please review your documents. Once you are done <b>click submit below</b>.
+                </div>
+                <form action="{{ route('claims.submit', [claim]) }}" method="POST">
+                    {{ csrf_field() }}
+                    {% for i in range(0, claim.expectedSetCount() - 1) %}
+                        {% set docset = documentSets[i] ?: {receipt: '', installation_photo: '', upc: '', purchased_at: ''} %}
+                        {% if claim.expectedSetCount() > 1 %}
+                            <h5 class="mb-3">Rebate Documents for Rebate #{{ i + 1 }}</h5>
+                        {% endif %}
+                        <div class="form-row">
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Receipt <span class="text-danger">*</span></label>
+                                    {% if docset.receipt %}
+                                        <img src="{{ asset('storage/' ~ docset.receipt) }}" alt="Receipt" class="img-thumbnail mt-4">
+                                    {% endif %}
+                                </div> <!-- .form-group -->
+                            </div> <!-- .col -->
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Installation Photo <span class="text-danger">*</span></label>
+                                    {% if docset.installation_photo %}
+                                        <img src="{{ asset('storage/' ~ docset.installation_photo) }}" alt="Installation Photo" class="img-thumbnail mt-4">
+                                    {% endif %}
+                                </div> <!-- .form-group -->
+                            </div> <!-- .col -->
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">UPC <span class="text-danger">*</span></label>
+                                    {% if docset.upc %}
+                                        <img src="{{ asset('storage/' ~ docset.upc) }}" alt="UPC" class="img-thumbnail mt-4">
+                                    {% endif %}
+                                </div> <!-- .form-group -->
+                            </div> <!-- .col -->
+                        </div> <!-- .form-row -->
+                        <div class="form-row">
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Date of Purchase <span class="text-danger">*</span></label>
+                                    <input class="form-control" name="docsets[{{i}}][purchased_at]" value="{{ docset.purchased_at ? docset.purchased_at | date('m/d/Y') : '' }}" style="width: 200px;" readonly />
+                                </div> <!-- .form-group -->
+                            </div> <!-- .col -->
+                        </div> <!-- .form-row -->
+                        {% if false == loop.last %}<hr>{% endif %}
+                    {% endfor %}
+                    <div class="alert alert-info mt-4">
+                        Need to delete or or re-upload some of your documents? <a href="{{ route('claims.edit', [claim]) }}">Click here to make changes</a>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Submit My Claim" />
+                    <a href="{{ status_url }}" class="btn btn-secondary">&larr; Back to Rebate Center</a>
+                </form>
+            </div> <!-- .card-body -->
+        </div> <!-- .card -->
+    </div> <!-- .inner -->
+</div> <!-- .container -->
+{% endblock %}

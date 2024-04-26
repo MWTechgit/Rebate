@@ -1,0 +1,147 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "ampeco/nova-date-range-filter": "^0.1.1",
+        "beyondcode/laravel-self-diagnosis": "^1.4",
+        "bwp/application-actions": "*",
+        "bwp/application-comments": "*",
+        "bwp/applications": "*",
+        "bwp/claim-actions": "*",
+        "bwp/claim-alerts": "*",
+        "bwp/claim-comments": "*",
+        "bwp/create-application": "*",
+        "bwp/fullpage-search": "*",
+        "bwp/image": "*",
+        "bwp/nova-theme": "*",
+        "bwp/quick-audit": "*",
+        "bwp/review-application": "*",
+        "fideloper/proxy": "^4.0",
+        "laravel/framework": "^6.2",
+        "laravel/nova": "*",
+        "laravel/tinker": "^2.0",
+        "maatwebsite/laravel-nova-excel": "^1.2",
+        "rcrowe/twigbridge": "^0.11.3",
+        "sentry/sentry-laravel": "^1.9",
+        "spatie/laravel-image-optimizer": "^1.6",
+        "spatie/laravel-tail": "^3.3",
+        "squareboat/sneaker": "^5.0",
+        "symfony/translation-contracts": "^1.1.6",
+        "tightenco/nova-releases": "^0.2.5",
+        "titasgailius/search-relations": "^1.0"
+    },
+    "require-dev": {
+        "facade/ignition": "^1.4",
+        "fzaninotto/faker": "^1.9.1",
+        "laravel/telescope": "^3.5",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "files": [
+            "app/helpers.php"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Applications"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/NovaTheme"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ClaimActions"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ApplicationActions"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ReviewApplication"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/QuickAudit"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ApplicationComments"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ApplicationComments"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ClaimComments"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ClaimAlerts"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CreateApplication"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/FullpageSearch"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Image"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}

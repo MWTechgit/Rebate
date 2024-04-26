@@ -1,0 +1,84 @@
+{% extends 'layouts.app' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/vendor/bootstrap-datepicker.standalone.min.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="inner">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="mb-0">Upload Rebate Claim Documents</h4>
+            </div>
+            <div class="card-body">
+
+                {% if errors.any %}
+                    {% for error in errors.all %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+
+                <form class="form-horizontal" action="{{ route('claims.update', [claim.id]) }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
+                    {% for i in range(0, claim.expectedSetCount() - 1) %}
+                        {% set docset = documentSets[i] ?: {receipt: '', installation_photo: '', upc: '', purchased_at: ''} %}
+                        {% if claim.expectedSetCount() > 1 %}
+                            <h5 class="mb-3">Rebate Documents for Rebate #{{ i + 1 }}</h5>
+                        {% endif %}
+                        <div class="form-row">
+                            <input type="hidden" name="docsets[{{i}}][id]" value="{{ docset.id }}">
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Receipt <span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control-file" name="docsets[{{i}}][receipt]" />
+                                    {% if docset.receipt %}
+                                        <img src="{{ asset('storage/' ~ docset.receipt) }}" alt="Receipt" class="img-thumbnail mt-4">
+                                    {% endif %}
+                                </div> <!-- .form-group -->
+                            </div> <!-- .col -->
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Installation Photo <span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control-file" name="docsets[{{i}}][installation_photo]" />
+                                    {% if docset.installation_photo %}
+                                        <img src="{{ asset('storage/' ~ docset.installation_photo) }}" alt="Installation Photo" class="img-thumbnail mt-4">
+                                    {% endif %}
+                                </div> <!-- .form-group -->
+                            </div> <!-- .col -->
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">UPC <span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control-file" name="docsets[{{i}}][upc]" />
+                                    {% if docset.upc %}
+                                        <img src="{{ asset('storage/' ~ docset.upc) }}" alt="UPC" class="img-thumbnail mt-4">
+                                    {% endif %}
+                                </div> <!-- .form-group -->
+                            </div> <!-- .col -->
+                        </div> <!-- .form-row -->
+                        <div class="form-row">
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Date of Purchase <span class="text-danger">*</span></label>
+                                    <input class="form-control datepicker" name="docsets[{{i}}][purchased_at]" value="{{ docset.purchased_at ? docset.purchased_at | date('m/d/Y') : '' }}" style="width: 200px;" />
+                                </div> <!-- .form-group -->
+                            </div> <!-- .col -->
+                        </div> <!-- .form-row -->
+                        {% if false == loop.last %}<hr>{% endif %}
+                    {% endfor %}
+                    <input class="btn btn-primary" type="submit" value="Upload Documents" />
+                    <a class="btn btn-secondary" href="{{ status_url }}">Cancel</a>
+                </form>
+            </div> <!-- .card-body -->
+        </div> <!-- .card -->
+    </div> <!-- .inner -->
+</div> <!-- .container -->
+{% endblock %}
+
+{% block javascript %}
+    <script src="/js/vendor/bootstrap-datepicker.min.js"></script>
+    <script>
+        $('.datepicker').datepicker();
+    </script>
+{% endblock %}

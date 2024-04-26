@@ -1,0 +1,46 @@
+.audit-comp {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.audit-header {
+    background: #ececec;
+    padding: 10px 0;
+    text-indent: 8px;
+}
+
+.audit-show-details {
+    margin-top: 10px;
+    display: block;
+}
+
+.audit-partner,
+.audit-date {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+table.table-audit {
+    border-bottom: 1px solid #dae1e7;
+    margin-bottom: 8px;
+
+    th {
+        background: #f8fafc;
+        border-top: 1px solid #dae1e7;
+        border-bottom: 1px solid #dae1e7;
+        font-size: 18px;
+        font-weight: normal;
+        padding: 8px 0px;
+        text-indent: 5px;
+    }
+
+    td {
+        padding: 15px 0;
+        padding-left: 5px;
+        border-bottom: 1px solid #dae1e7;
+
+        a {
+
+        }
+    }
+}

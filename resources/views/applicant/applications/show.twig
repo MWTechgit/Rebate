@@ -1,0 +1,116 @@
+{% extends 'layouts.app' %}
+
+{% block content %}
+<div class="container">
+    <div class="inner mb-4">
+        <h1>Your Rebate Application</h1>
+        <p>Below is the information you submitted on your rebate application.</p>
+        <div class="row">
+            <div class="col-md">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">Applicant Information</h4>
+                    </div> <!-- .card-header -->
+                    <div class="card-body">
+                        <h5>{{ applicant.full_name }}</h5>
+                        Phone: {{ applicant.phone|phone }}
+                        <br>
+                        Mobile: {{ applicant.mobile|phone }}
+                        <br>
+                        E-Mail: {{ applicant.email }}
+                    </div> <!-- .card-body -->
+                </div> <!-- .card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">Water Utility Information</h4>
+                    </div> <!-- .card-header -->
+                    <div class="card-body">
+                        <h5>Utility Billing Address</h5>
+                        <p>{{ utility.address }}</p>
+                        <h5>Utility Account Number</h5>
+                        {{ utility.account_number }}
+                    </div> <!-- .card-body -->
+                </div> <!-- .card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">Applicant Feedback</h4>
+                    </div> <!-- .card-header -->
+                    <div class="card-body">
+                        <h5>How did you hear about this program?</h5>
+                        <p>{{ reference.type.type }}</p>
+                        <h5>{{ reference.type.info_text }}</h5>
+                        <p>{{ reference.info_response }}</p>
+                        <h5>Is the toilet you replacing original to the property?</h5>
+                        <p>{{ property.original_toilet }}</p>
+                        <h5>How many gallons per flush does the toilet you are replacing use?</h5>
+                        {{ property.gallons_per_flush ?: 'No response' }}
+                    </div> <!-- .card-body -->
+                </div> <!-- .card -->
+            </div> <!-- .col -->
+
+            <div class="col-md">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">Property Details</h4>
+                    </div> <!-- .card-header -->
+                    <div class="card-body">
+                        <h5>Rebate Partner</h5>
+                        <p>{{ partner.name }}</p>
+
+                        <h5>Rebate</h5>
+                        <p>
+                            {{ rebate.name }}
+                            <br>
+                            Applied for <b>{{ application.rebate_count }} rebate(s)</b>
+                        </p>
+
+                        <h5>Property Address</h5>
+                        <p>{{ property.address }}</p>
+
+                        <table class="table table-bordered table-sm">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 140px;">Property Type</td>
+                                    <td>{{ property.property_type }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Building Type</td>
+                                    <td>{{ property.building_type }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Full Bathrooms</td>
+                                    <td>{{ property.full_bathrooms }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Half Bathrooms</td>
+                                    <td>{{ property.half_bathrooms }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Year Built</td>
+                                    <td>{{ property.year_built }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h5>Do you own your residence?</h5>
+                        <p>{{ property.owned_by_applicant ? 'Yes' : 'No' }}</p>
+
+                        <h5>How long have you lived at this address?</h5>
+                        <p>{{ property.years_lived ?: 'No answer' }}</p>
+
+                        <h5>How many people reside in the home?</h5>
+                        <p>{{ property.occupants }}</p>
+
+                        <h5>Sub-division or development name</h5>
+                        {{ property.subdivision_or_development }}
+                    </div> <!-- .card-body -->
+                </div> <!-- .card -->
+            </div> <!-- .col -->
+        </div> <!-- .row -->
+        <a href="{{ status_url }}" class="mb-4 mt-2 btn btn-secondary">&larr; Back to Rebate Center</a>
+        <br>
+        <br>
+        <br>
+    </div> <!-- .inner -->
+</div> <!-- .container -->
+{% endblock %}

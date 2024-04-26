@@ -1,0 +1,43 @@
+.btn-outline {
+    padding-top: 4px;
+}
+
+.btn-success {
+    background: #38C172;
+    color: white;
+}
+
+div[dusk="document-sets-index-component"] img.rounded-full {
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+}
+
+div[dusk="document-sets-detail-component"] img[src="/svg/file.svg"],
+div[dusk="document-sets-index-component"] img[src="/svg/file.svg"] {
+    max-width: 36px;
+}
+
+/*
+    Customize package nova-nested-form
+    https://github.com/yassipad/laravel-nova-nested-form
+    * Remove duplicate banner
+    * Remove delete button, this should be configurable
+      in the package but it isn't.
+*/
+.nested-form-container .nested-form > div:first-child {
+    /* This hides the banner containing the delete button */
+    display: none;
+}
+
+.label {
+    border-radius: 4px;
+    background: #A2A2A2;
+    /*text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);*/
+    color: #fff;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 5px 4px;
+    font-size: 12px;
+    font-weight: 700;
+}

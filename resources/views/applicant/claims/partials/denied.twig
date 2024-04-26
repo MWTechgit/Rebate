@@ -1,0 +1,16 @@
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="mb-0">Rebate Claim Denied</h4>
+    </div> <!-- .card-header -->
+    <div class="card-body">
+        <p>Sorry but your claim has been denied. Below are the reason(s) for the denial.</p>
+
+        <blockquote class="blockquote">
+            {% if claim.isExpired() %}
+                Your rebate claim has expired because we didn't receive all the necessary information in a timely manner.
+            {% else %}
+                {{ claim.denial().reason() }}
+            {% endif %}
+        </blockquote>
+    </div> <!-- .card-body -->
+</div> <!-- .card -->
